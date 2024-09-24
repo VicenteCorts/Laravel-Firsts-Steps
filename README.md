@@ -19,7 +19,7 @@ Primeros pasos en Laravel siguiendo el curso de Victor Robles de Udemy-Master en
 - Escribimos el comando: composer create-project laravel/laravel example-app -> EN MI CASO -> composer create-project laravel/laravel 09aprendiendo-laravel "11.*" --prefer-dist
 - (composer create-project laravel/laravel-no tocar|09aprendiendo-laravel-nombre de la carpeta a crear|"11.*" -versión del laravel| --prefer-dist -ni idea)
 
-#Clase 321 - Instalar Extensiones PHP
+# Clase 321 - Instalar Extensiones PHP
 ### Instalar extensiones de php en Wamp server
 - Nos dirigimos al directorio en el que tenemos instalada la versión de php: A:\wamp64\bin\php\php8.3.0\ext
 - Aquí veremos todas las extensiones instaladas.
@@ -41,8 +41,35 @@ Primeros pasos en Laravel siguiendo el curso de Victor Robles de Udemy-Master en
 - https://www.dlldownloader.com/php_ctype-dll/
 - http://www.originaldll.com/file/php_json.dll/31989.html
 
+# CLASE 322 Crear un Host virtual
+Seguir los pasos del enlace de Victor Robles: https://victorroblesweb.es/2016/03/26/crear-varios-hosts-virtuales-en-wampserver/
 
+1. Entrar al fichero C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf y añadir o descomentar el include del fichero de los hosts virutales:
+	Include conf/extra/httpd-vhosts.conf
 
+2. Entrar al fichero C:\wamp\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf y añadir los virtualhosts, en mi caso voy a crear 3 nuevos virtualhosts, uno para localhost, otro para un proyecto de Zend Framework 2 y otro para un proyecto de Symfony 3.
+	<VirtualHost *:80>   
+    		DocumentRoot "c:/wamp/www/symfony3"
+    		ServerName symfony3.com.devel
+    		ServerAlias www.symfony3.com.devel
+    		<Directory "c:/wamp/www/symfony3/web">
+        		Options Indexes FollowSymLinks     
+        		AllowOverride All
+        		Order Deny,Allow
+        		Allow from all     
+    		</Directory> 
+	</VirtualHost>
+
+3. Modificamos el texto anterior:
+	DocumentRoot "${INSTALL_DIR}/www/master-php/09aprendiendo-laravel/public/"
+    	ServerName 09aprendiendo-laravel.com.devel
+    	ServerAlias www.09aprendiendo-laravel.com.devel
+    	<Directory "${INSTALL_DIR}/www/master-php/09aprendiendo-laravel/public/">
+
+4. Añadir al fichero hosts de nuestro sistema, en el caso de Windows C:\Windows\System32\drivers\etc\hosts (si estas en Windows 8 o 10 ejecuta el programa de edición de código como Administrador para poder guardar los cambios), y añadir las IP y las url.
+	127.0.0.1 09aprendiendo-laravel.com.devel (El ServerName escogido)
+
+5. Reiniciamos el wamp y comprobamos en el navegador si la url: 09aprendiendo-laravel.com.devel nos lleva al proyecto.
 
 
 
