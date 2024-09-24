@@ -19,7 +19,27 @@ Primeros pasos en Laravel siguiendo el curso de Victor Robles de Udemy-Master en
 - Escribimos el comando: composer create-project laravel/laravel example-app -> EN MI CASO -> composer create-project laravel/laravel 09aprendiendo-laravel "11.*" --prefer-dist
 - (composer create-project laravel/laravel-no tocar|09aprendiendo-laravel-nombre de la carpeta a crear|"11.*" -versión del laravel| --prefer-dist -ni idea)
 
+#Clase 321 - Instalar Extensiones PHP
+### Instalar extensiones de php en Wamp server
+- Nos dirigimos al directorio en el que tenemos instalada la versión de php: A:\wamp64\bin\php\php8.3.0\ext
+- Aquí veremos todas las extensiones instaladas.
+- Debemos buscar los .dll en internet de las extensiones: Tokenizer, XML, Ctype y JSON.
+- Copiar los archivos .dll en la carpeta anterior de extensiones
+- Reiniciar el wamp server 
+- Dará error porque hay que configurar el archivo php.ini
+- Dentro de php.ini Ctrl + B -> extension
+- Añadir al final:
+	extension=php_tokenizer
+	extension=php_xml
+	extension=php_ctype
+	extension=php_json
+-Reiniciar y activar las nuevas extensiones
 
+#### Enlaces para descargar las extensiones:
+- https://www.dlldownloader.com/php_tokenizer-dll/
+- https://www.dlldownloader.com/php_xmlrpc-dll/
+- https://www.dlldownloader.com/php_ctype-dll/
+- http://www.originaldll.com/file/php_json.dll/31989.html
 
 
 
