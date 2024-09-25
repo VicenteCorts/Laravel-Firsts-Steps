@@ -71,6 +71,28 @@ Seguir los pasos del enlace de Victor Robles: https://victorroblesweb.es/2016/03
 
 5. Reiniciamos el wamp y comprobamos en el navegador si la url: 09aprendiendo-laravel.com.devel nos lleva al proyecto.
 
+6. REALMENTE HE AGREADO EL VHOST A TRAVES DEL PANEL DE LOCALHOST; AÑADIENDO DE MANERA AUTOMATICA ESTE TEXTO A LOS SIGUIENTES ARCHIVOS
+
+- A:\wamp64\bin\apache\apache2.4.58\conf\extra ->httpd-vhost.conf
+<VirtualHost *:80>
+	ServerName aprendiendo-laravel.com.devel
+	DocumentRoot "a:/wamp64/www/master-php/09aprendiendo-laravel/public"
+	<Directory  "a:/wamp64/www/master-php/09aprendiendo-laravel/public/">
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+	</Directory>
+</VirtualHost>
+
+- C:\Windows\System32\drivers\etc -> hosts
+127.0.0.1	aprendiendo-laravel.com.devel
+::1	aprendiendo-laravel.com.devel
+
+# Clase 323 Estructura de proyecto Laravel
+### 
+
+
+
 
 
 
