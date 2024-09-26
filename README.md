@@ -233,7 +233,31 @@ Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una l
 >	@endif
 
 # Clase 333 Bucles en Vistas
-###
+### Estructuras de control principales
+
+```html
+<!-- Bucles -->
+
+@for($i=1; $i<=20; $i++)
+El número es: {{$i}} </br>
+@endfor
+
+<hr/>
+
+<?php $contador = 1 ?>
+@while($contador <50)
+    @if($contador % 2 == 0)
+        NUMERO PAR: {{$contador}} <br/>
+    @endif
+    <?php $contador++; ?>
+@endwhile
+
+<hr/>
+
+@foreach ($listado as $pelicula)
+    <p>{{$pelicula}}</p>
+@endforeach
+```
 
 # Clase 334 Includes en Vistas
 ###
