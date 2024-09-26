@@ -151,10 +151,24 @@ Dirección de los archivos de vistas: project/resources/views
 - #### Route::get('/pelicula/{titulo?}', function ($titulo = 'No hay película seleccionada'){...}
 
 # Clase 326 Parámetros Opcionales
-### 
+### Condiciones en las Rutas
 
+- Podemos Establecer condiciones al final del módulo de ruta incluyendo la cláusula -> 'where'
+- Y hacer obligatorios o nos los parámetros (titulo o year) mediante el símbolo -> '?'
 
+>```html
+>Route::get('/pelicula/{titulo}/{year?}', function ($titulo = 'No hay película seleccionada', $year = 2024){
+>    return view('pelicula', array(
+>        'titulo' => $titulo,
+>        'year' => $year
+>    ));
+>})->where(array(
+>    'titulo'=> '[a-zA-Z]+',
+>    'year'=> '[0-9]+'
+>));
 
+- En este ejemplo, el parámetro 'titulo' es boligatorio, mienstras que 'year' no [year viene seguido de '?']
+- Por otro lado en la parte de la condición 'where', la web dará error 404 cuando 'titulo' presente números y/o 'year' presente letras
 
 
 
