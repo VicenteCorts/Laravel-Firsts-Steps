@@ -173,13 +173,47 @@ Dirección de los archivos de vistas: project/resources/views
 # Clase 327 Consola Artisan
 ### Toma de contacto con la consola Artisan
 - Accedemos a la consola (cualquiera) y nos vamos a la ruta del proyecto
-- Escribimos el comando **$ php artisan** -> listado de comandos de Artisan
-- $ php artisan route:list
+- $ php artisan (listado de comandos de Artisan)
+- $ php artisan route:list (listado de las rutas disponibles)
 - $ php artisan make:controller PruebasController (para crear controladores)
 	+ La ruta de este controlador sera: A:\wamp64\www\master-php\09aprendiendo-laravel\app\Http\Controllers
 
 # Clase 328 Vistas en Laravel
-###
+### Vistas y Parámetros
+Presta atención a los comentarios del siguiente código:
+
+>```html
+>Route::get('/listado-peliculas', function () { //Nombre de la url, no tiene porque ser como la ruta
+>    $titulo = "Listado de Películas";
+>    $listado = array('Batman', 'Spiderman', 'Gran Torino');
+>    
+>//    return view('peliculas.listado', array(
+>//        'titulo' => $titulo
+>//    ));
+>
+>    return view('peliculas.listado') //Carpeta.Archivo
+>            ->with('listado', $listado) //Parámetros adicionales con método 'with'
+>            ->with('titulo', $titulo);  //Parámetros adicionales con método 'with'
+>});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
