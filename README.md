@@ -16,7 +16,9 @@ Primeros pasos en Laravel siguiendo el curso de Victor Robles de Udemy-Master en
 
 ### Inicio del Proyecto
 - Abrimos cmd y nos vamos a la carpeta del curso en el que estamos trabajando: A:\wamp64\www\master-php>
-- Escribimos el comando: composer create-project laravel/laravel example-app -> EN MI CASO -> composer create-project laravel/laravel 09aprendiendo-laravel "11.*" --prefer-dist
+- Escribimos el comando: 
+- composer create-project laravel/laravel example-app -> EN MI CASO -> 
+- **composer create-project laravel/laravel 09aprendiendo-laravel "11.*" --prefer-dist**
 - (composer create-project laravel/laravel-no tocar|09aprendiendo-laravel-nombre de la carpeta a crear|"11.*" -versión del laravel| --prefer-dist -ni idea)
 
 # Clase 321 - Instalar Extensiones PHP
@@ -186,7 +188,8 @@ Presta atención a los comentarios del siguiente código:
 >Route::get('/listado-peliculas', function () { //Nombre de la url, no tiene porque ser como la ruta
 >    $titulo = "Listado de Películas";
 >    $listado = array('Batman', 'Spiderman', 'Gran Torino');
->    
+>
+>// EJEMPLO ANTERIOR DE RETURN, EL EJEMPLO ACTUAL ES EL QUE VIENE ABAJO CON LOS WITH    
 >//    return view('peliculas.listado', array(
 >//        'titulo' => $titulo
 >//    ));
@@ -195,6 +198,40 @@ Presta atención a los comentarios del siguiente código:
 >            ->with('listado', $listado) //Parámetros adicionales con método 'with'
 >            ->with('titulo', $titulo);  //Parámetros adicionales con método 'with'
 >});
+
+
+# Clase 329 Interpolación en Blade
+### Blade
+Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una librería "php".Podemos emplear todo lo aprendido de php en el curso; sin embargo, se puede hacer *Interpolación de Variables*:
+- <?=$variable?> (en php)
+- {{$variable}} (blade)
+- La sintaxis de *Blade* son más amigables para las vistas y plantillas de Laravel
+
+# Clase 330 Comentarios en Blade
+###
+
+# Clase 331 Mostrar cuando Existe
+###
+
+# Clase 332 If's en Vistas
+###
+
+# Clase 333 Bucles en Vistas
+###
+
+# Clase 334 Includes en Vistas
+###
+
+# Clase 335 Plantilla base o Layout
+###
+
+
+
+
+
+
+
+
 
 
 
