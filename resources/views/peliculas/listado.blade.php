@@ -25,7 +25,6 @@
 @endif
 
 <!-- Bucles -->
-
 @for($i=1; $i<=20; $i++)
 El número es: {{$i}} </br>
 @endfor
@@ -45,3 +44,10 @@ El número es: {{$i}} </br>
 @foreach ($listado as $pelicula)
     <p>{{$pelicula}}</p>
 @endforeach
+
+
+<!-- Includes en las vistas -->
+@include('includes.header')
+@include('includes.footer')
+
+<!-- Plantillas base o Layout -->

@@ -35,3 +35,9 @@ Route::get('/listado-peliculas', function () { //Nombre de la url, no tiene porq
             ->with('listado', $listado) //Parámetros adicionales con método 'with'
             ->with('titulo', $titulo);  //Parámetros adicionales con método 'with'
 });
+
+Route::get('/pagina-generica', function(){
+   
+    return view('pagina');
+    
+});

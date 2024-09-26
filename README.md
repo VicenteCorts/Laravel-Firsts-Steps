@@ -260,13 +260,38 @@ El número es: {{$i}} </br>
 ```
 
 # Clase 334 Includes en Vistas
-###
+### Implementación
+Sigue una implementación distinta a los "includes" de vistas principales (los Route::get() vistos en apartados anteriores)
+```html
+<!-- Includes en las vistas -->
+@include('includes.header')
+@include('includes.footer')
+```
+- No hace falta ";"
 
 # Clase 335 Plantilla base o Layout
-###
+### Plantillas Maestras
+- En Laravel las Plantillas Maestras se definen en el directorio ** recourses/views**
+- Creamos en esta carpeta, una llamada layouts (Es común crearla para las plantillas e includes)
+- Con blade podemos crear bloques para posteriormente incluirlos en las vistas
 
+### @yield()
+Variable para sustituir / se usa para variables de contenido no para bloques de plantilla
 
+### Secciones
+- Se declaran con @section ('header')
+- Se cierran con @show
 
+### Difenrecia entre @yield y @section
+- **yield** no tiene un contenido predeterminado
+- **section** puede tener contenido predeterminado
+- Ambos son sustituibles 
+
+### Extends
+- @extends('layouts.master') para imprimir la vista master.blade.php en el archivo pagina.blade.php
+- dentro de la pagina.blade.php debemos indicar @section('nombre del yield o section que extiende - nombrado igual') y despues del bloque **@stop**
+- Podemos sustituir directamente cosas de la plantilla padre empleando @section('') - @stop
+- Si queremos añadir (en vez de sustituir) a lo que hay en la plantilla padre empleamos @parent()
 
 
 
