@@ -74,15 +74,16 @@ Seguir los pasos del enlace de Victor Robles: https://victorroblesweb.es/2016/03
 6. REALMENTE HE AGREADO EL VHOST A TRAVES DEL PANEL DE LOCALHOST; AÑADIENDO DE MANERA AUTOMATICA ESTE TEXTO A LOS SIGUIENTES ARCHIVOS
 
 - A:\wamp64\bin\apache\apache2.4.58\conf\extra ->httpd-vhost.conf
-<VirtualHost *:80>
-	ServerName aprendiendo-laravel.com.devel
-	DocumentRoot "a:/wamp64/www/master-php/09aprendiendo-laravel/public"
-	<Directory  "a:/wamp64/www/master-php/09aprendiendo-laravel/public/">
-		Options +Indexes +Includes +FollowSymLinks +MultiViews
-		AllowOverride All
-		Require local
-	</Directory>
-</VirtualHost>
+>```html
+><VirtualHost *:80>
+>	ServerName aprendiendo-laravel.com.devel
+>	DocumentRoot "a:/wamp64/www/master-php/09aprendiendo-laravel/public"
+>	<Directory  "a:/wamp64/www/master-php/09aprendiendo-laravel/public/">
+>		Options +Indexes +Includes +FollowSymLinks +MultiViews
+>		AllowOverride All
+>		Require local
+>	</Directory>
+></VirtualHost>
 
 - C:\Windows\System32\drivers\etc -> hosts
 127.0.0.1	aprendiendo-laravel.com.devel
@@ -103,13 +104,13 @@ Devuelve una vista.
 
 #### Creación de ruta
 
-```html
-	Route::get('/mostrar-fecha', function(){
-    		echo "<h1>FECHA ACTUAL</h1>";
-    		echo date('d-m-y');
-    		echo "<h2><a href='/'>Inicio</a></h2>";
-	});
-end
+>```html
+>	Route::get('/mostrar-fecha', function(){
+>    		echo "<h1>FECHA ACTUAL</h1>";
+>  		echo date('d-m-y');
+>   		echo "<h2><a href='/'>Inicio</a></h2>";
+>	});
+
 ### Pantalla de errores
 Te muestra una pantalla adicional señalando el error cometido. En algunas versiones te lleva a enlaces con soluciones en el navegador.
 
@@ -118,34 +119,33 @@ Dirección de los archivos de vistas: project/resources/views
 - A la hora de crear vistas tenemos que añadir la temrinación .blade andtes de la terminación del tipo de archivo; ejemplo: mostrar-fecha.blade.php
 - Creamos el archivo dentro de la ruta indicada para las vistas y metemos en este todo el código anterior para imprimir información por pantalla
 - Dejaríamos el archivo web.php así:
-```html	
-	Route::get('/mostrar-fecha', function(){
-    		$titulo = "Estoy mostrando la fecha";
-    		return view('mostrar-fecha', array(
-        	'titulo' => $titulo
-   		 ));
-	});
+>```html	
+>	Route::get('/mostrar-fecha', function(){
+>    		$titulo = "Estoy mostrando la fecha";
+>    		return view('mostrar-fecha', array(
+>        	'titulo' => $titulo
+>   		 ));
+>	});
 
-end
 - ##### return view('mostrar-fecha'); Método para imprimir vistas
 - El nuevo archivo para vistas (mostrar-fecha.blade.php) quedaría así:
-```html
-	<?php
-	echo "<h1>$titulo</h1>";
-	echo date('d-m-y');
-	echo "<h2><a href='/'>Inicio</a></h2>";
-end
+>```html
+>	<?php
+>	echo "<h1>$titulo</h1>";
+>	echo date('d-m-y');
+>	echo "<h2><a href='/'>Inicio</a></h2>";
+
 # Clase 325 Parámetros de las Rutas
 ### Añadir parámetro para la url
 - #### Route::get('/pelicula/{titulo}', function ($titulo){ DESARROLLO DE LA FUNCIÓN });
 
-```html
-	Route::get('/pelicula/{titulo}', function ($titulo){
-    		return view('pelicula', array(
-        	'titulo' => $titulo
-    		));
-	});
-end
+>```html
+>	Route::get('/pelicula/{titulo}', function ($titulo){
+>    		return view('pelicula', array(
+>        	'titulo' => $titulo
+>    		));
+>	});
+
 - Ahora al escribir en la url: http://aprendiendo-laravel.com.devel/pelicula/Batman  -> Imprime por pantalla Batman
 - También se puede manipular para que si no se pasa el parámetro tenga un mensaje por defecto, para ello:
 - #### Route::get('/pelicula/{titulo?}', function ($titulo = 'No hay película seleccionada'){...}
