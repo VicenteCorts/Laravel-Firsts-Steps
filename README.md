@@ -88,10 +88,50 @@ Seguir los pasos del enlace de Victor Robles: https://victorroblesweb.es/2016/03
 127.0.0.1	aprendiendo-laravel.com.devel
 ::1	aprendiendo-laravel.com.devel
 
-# Clase 323 Estructura de proyecto Laravel
-### 
+# Clase 323 Estructura de Proyecto
+### Explicación básica de los directorios
 
+# Clase 324
+### Archivo web.php (ubicado en directorio routes)
+Devuelve una vista.
 
+#### Metodos http
+- GET: conseguir datos
+- POST: guardar datos o recursos
+- PUT: Actualizar recursos
+- Delete: Eliminar recursos
+
+#### Creación de ruta
+
+Route::get('/mostrar-fecha', function(){
+    echo "<h1>FECHA ACTUAL</h1>";
+    echo date('d-m-y');
+    echo "<h2><a href='/'>Inicio</a></h2>";
+});
+
+#### Pantalla de errores
+Te muestra una pantalla adicional señalando el error cometido. En algunas versiones te lleva a enlaces con soluciones en el navegador.
+
+### Crear Vistas
+Dirección de los archivos de vistas: project/resources/views
+- A la hora de crear vistas tenemos que añadir la temrinación .blade andtes de la terminación del tipo de archivo; ejemplo: mostrar-fecha.blade.php
+- Creamos el archivo dentro de la ruta indicada para las vistas y metemos en este todo el código anterior para imprimir información por pantalla
+- Dejaríamos el archivo web.php así:
+Route::get('/mostrar-fecha', function(){
+    $titulo = "Estoy mostrando la fecha";
+    return view('mostrar-fecha', array(
+        'titulo' => $titulo
+    ));
+});
+- ##### return view('mostrar-fecha'); Método para imprimir vistas
+- El nuevo archivo para vistas (mostrar-fecha.blade.php) quedaría así:
+<?php
+echo "<h1>$titulo</h1>";
+echo date('d-m-y');
+echo "<h2><a href='/'>Inicio</a></h2>";
+
+# Clase 325
+###
 
 
 
