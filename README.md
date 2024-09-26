@@ -170,8 +170,16 @@ Dirección de los archivos de vistas: project/resources/views
 - En este ejemplo, el parámetro 'titulo' es boligatorio, mienstras que 'year' no [year viene seguido de '?']
 - Por otro lado en la parte de la condición 'where', la web dará error 404 cuando 'titulo' presente números y/o 'year' presente letras
 
+# Clase 327 Consola Artisan
+### Toma de contacto con la consola Artisan
+- Accedemos a la consola (cualquiera) y nos vamos a la ruta del proyecto
+- Escribimos el comando **$ php artisan** -> listado de comandos de Artisan
+- $ php artisan route:list
+- $ php artisan make:controller PruebasController (para crear controladores)
+	+ La ruta de este controlador sera: A:\wamp64\www\master-php\09aprendiendo-laravel\app\Http\Controllers
 
-
+# Clase 328 Vistas en Laravel
+###
 
 
 
