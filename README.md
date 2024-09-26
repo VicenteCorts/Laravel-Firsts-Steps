@@ -104,12 +104,12 @@ Devuelve una vista.
 #### Creación de ruta
 
 ```html
-Route::get('/mostrar-fecha', function(){
-    echo "<h1>FECHA ACTUAL</h1>";
-    echo date('d-m-y');
-    echo "<h2><a href='/'>Inicio</a></h2>";
-});
-
+	Route::get('/mostrar-fecha', function(){
+    		echo "<h1>FECHA ACTUAL</h1>";
+    		echo date('d-m-y');
+    		echo "<h2><a href='/'>Inicio</a></h2>";
+	});
+end
 ### Pantalla de errores
 Te muestra una pantalla adicional señalando el error cometido. En algunas versiones te lleva a enlaces con soluciones en el navegador.
 
@@ -125,6 +125,8 @@ Dirección de los archivos de vistas: project/resources/views
         	'titulo' => $titulo
    		 ));
 	});
+
+end
 - ##### return view('mostrar-fecha'); Método para imprimir vistas
 - El nuevo archivo para vistas (mostrar-fecha.blade.php) quedaría así:
 ```html
@@ -132,7 +134,7 @@ Dirección de los archivos de vistas: project/resources/views
 	echo "<h1>$titulo</h1>";
 	echo date('d-m-y');
 	echo "<h2><a href='/'>Inicio</a></h2>";
-
+end
 # Clase 325 Parámetros de las Rutas
 ### Añadir parámetro para la url
 - #### Route::get('/pelicula/{titulo}', function ($titulo){ DESARROLLO DE LA FUNCIÓN });
@@ -143,6 +145,7 @@ Dirección de los archivos de vistas: project/resources/views
         	'titulo' => $titulo
     		));
 	});
+end
 - Ahora al escribir en la url: http://aprendiendo-laravel.com.devel/pelicula/Batman  -> Imprime por pantalla Batman
 - También se puede manipular para que si no se pasa el parámetro tenga un mensaje por defecto, para ello:
 - #### Route::get('/pelicula/{titulo?}', function ($titulo = 'No hay película seleccionada'){...}
