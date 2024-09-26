@@ -103,11 +103,12 @@ Devuelve una vista.
 
 #### Creación de ruta
 
->Route::get('/mostrar-fecha', function(){
->    echo "<h1>FECHA ACTUAL</h1>";
->    echo date('d-m-y');
->    echo "<h2><a href='/'>Inicio</a></h2>";
->});
+```html
+Route::get('/mostrar-fecha', function(){
+    echo "<h1>FECHA ACTUAL</h1>";
+    echo date('d-m-y');
+    echo "<h2><a href='/'>Inicio</a></h2>";
+});
 
 ### Pantalla de errores
 Te muestra una pantalla adicional señalando el error cometido. En algunas versiones te lleva a enlaces con soluciones en el navegador.
@@ -117,29 +118,31 @@ Dirección de los archivos de vistas: project/resources/views
 - A la hora de crear vistas tenemos que añadir la temrinación .blade andtes de la terminación del tipo de archivo; ejemplo: mostrar-fecha.blade.php
 - Creamos el archivo dentro de la ruta indicada para las vistas y metemos en este todo el código anterior para imprimir información por pantalla
 - Dejaríamos el archivo web.php así:
->```html	
->	Route::get('/mostrar-fecha', function(){
->    		$titulo = "Estoy mostrando la fecha";
->    		return view('mostrar-fecha', array(
->        	'titulo' => $titulo
->   		 ));
->	});
+```html	
+	Route::get('/mostrar-fecha', function(){
+    		$titulo = "Estoy mostrando la fecha";
+    		return view('mostrar-fecha', array(
+        	'titulo' => $titulo
+   		 ));
+	});
 - ##### return view('mostrar-fecha'); Método para imprimir vistas
 - El nuevo archivo para vistas (mostrar-fecha.blade.php) quedaría así:
->	<?php
->	echo "<h1>$titulo</h1>";
->	echo date('d-m-y');
->	echo "<h2><a href='/'>Inicio</a></h2>";
+```html
+	<?php
+	echo "<h1>$titulo</h1>";
+	echo date('d-m-y');
+	echo "<h2><a href='/'>Inicio</a></h2>";
 
 # Clase 325 Parámetros de las Rutas
 ### Añadir parámetro para la url
 - #### Route::get('/pelicula/{titulo}', function ($titulo){ DESARROLLO DE LA FUNCIÓN });
 
->	Route::get('/pelicula/{titulo}', function ($titulo){
->    		return view('pelicula', array(
->        	'titulo' => $titulo
->    		));
->	});
+```html
+	Route::get('/pelicula/{titulo}', function ($titulo){
+    		return view('pelicula', array(
+        	'titulo' => $titulo
+    		));
+	});
 - Ahora al escribir en la url: http://aprendiendo-laravel.com.devel/pelicula/Batman  -> Imprime por pantalla Batman
 - También se puede manipular para que si no se pasa el parámetro tenga un mensaje por defecto, para ello:
 - #### Route::get('/pelicula/{titulo?}', function ($titulo = 'No hay película seleccionada'){...}
