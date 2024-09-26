@@ -210,6 +210,7 @@ Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una l
 # Clase 330 Comentarios en Blade
 ### Comparación de comentarios en html, php y Blade
 
+>```html
 >	<!--Comentario HTML-->
 >	// Comentario PHP
 >	{{-- Comentario BLADE --}}
@@ -221,7 +222,15 @@ Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una l
 - En blade: {{$variable ?? 'No hay variable'}}
 
 # Clase 332 If's en Vistas
-###
+### Declaración
+>```html
+>	@if($titulo && count($listado)>=2)
+>	    <h1>La variable existe: {{$titulo}} y el listado es mayor o igual a 5</h1>
+>	@elseif($titulo)
+>	    <h1>titulo existe pero listado no es mayor qe 5</h1>
+>	@else
+>	    <h1>El título no existe</h1>
+>	@endif
 
 # Clase 333 Bucles en Vistas
 ###
