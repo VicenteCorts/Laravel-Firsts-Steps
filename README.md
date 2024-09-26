@@ -202,16 +202,23 @@ Presta atención a los comentarios del siguiente código:
 
 # Clase 329 Interpolación en Blade
 ### Blade
-Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una librería "php".Podemos emplear todo lo aprendido de php en el curso; sin embargo, se puede hacer *Interpolación de Variables*:
+Laravel funciona con blade para gestionar plantillas y vistas. Se trata de una librería "php".Podemos emplear todo lo aprendido de php en el curso; sin embargo, se puede hacer **Interpolación de Variables**:
 - <?=$variable?> (en php)
 - {{$variable}} (blade)
-- La sintaxis de *Blade* son más amigables para las vistas y plantillas de Laravel
+- La sintaxis de **Blade** son más amigables para las vistas y plantillas de Laravel
 
 # Clase 330 Comentarios en Blade
-###
+### Comparación de comentarios en html, php y Blade
+
+>	<!--Comentario HTML-->
+>	// Comentario PHP
+>	{{-- Comentario BLADE --}}
 
 # Clase 331 Mostrar cuando Existe
-###
+### Mostrar variable solo si existe
+- En php: <?= isset($variable) ? $variable : 'No hay varaible'; ?>
+- ~~En blade: {{$variable or 'No hay variable'}}~~
+- En blade: {{$variable ?? 'No hay variable'}}
 
 # Clase 332 If's en Vistas
 ###
