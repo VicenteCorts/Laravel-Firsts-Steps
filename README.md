@@ -293,8 +293,23 @@ Variable para sustituir / se usa para variables de contenido no para bloques de 
 - Podemos sustituir directamente cosas de la plantilla padre empleando @section('') - @stop
 - Si queremos añadir (en vez de sustituir) a lo que hay en la plantilla padre empleamos @parent()
 
+# Clase 336 Controladores Básicos
+### 
 
+# Clase 337 Controladores Resource
+###
 
+# Clase 338 Enlaces en Laravel
+###
+
+# Clase 339 Redirecciones
+###
+
+# Clase 340 Middlewares
+###
+
+# Clase 341 Formularios en Laravel
+###
 
 
 
