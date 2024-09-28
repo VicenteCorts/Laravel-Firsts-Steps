@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('peliculas/{pagina?}', [PeliculaController::class, 'index']);
 Route::get('detalle', [PeliculaController::class, 'detalle']);
 
+//CLASE 339
+Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
+
 //CLASE 337
 Route::resource('usuario', UsuarioController::class);
 

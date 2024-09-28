@@ -4,3 +4,5 @@
 @if(isset($pagina))
 <h3> La página es: {{$pagina}}</h3>
 @endif
+
+<a href="{{ url('/detalle') }}">Ir al detalle</a>
