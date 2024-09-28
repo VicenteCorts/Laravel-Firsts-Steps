@@ -294,13 +294,50 @@ Variable para sustituir / se usa para variables de contenido no para bloques de 
 - Si queremos añadir (en vez de sustituir) a lo que hay en la plantilla padre empleamos @parent()
 
 # Clase 336 Controladores Básicos
-### 
+### Ruta de los controladores y creación
+Los controladores se encuentran en el directorio app/http/controllers
+- Aqui podríamos crearlos manualmente
+Para crearlos por consola, seguiríamos los sigueintes pasos.
+- Abrimos la consola y vamos al directorio de nuestro proyecto
+- php artisan make:controller NombreControlador
+
+### Construyendo el controlador
+En el archivo del controlador creado debemos completar el controlador para que realice las acciones deseadas por ejemplo:
+```html
+public function index() {
+        $titulo ='Listado de mis películas';
+        return view('pelicula.index', [
+            'titulo' =>$titulo
+        ]);
+    }
+```
+### Más sobre Controladores
+Luego debemos crear la ruta en web.php
+- primero importamos el namespace **use App\Http\Controllers\PeliculaController;**
+- luego creamos la ruta sigueindo la siguiente  **Route::get('peliculas', [PeliculaController::class, 'index']);**
+
+Más info:
+- Podemos cambiar la última línea para hacer que lleguen parámetros
+- Route::get('peliculas/{pagina?}', [PeliculaController::class, 'index']);
+- con "?" hacemos que el parámetro sea opcional; para que si no añadimos nada en la url tome el parámetro con valor default, pero si añadimos algo (peliculas/2) el nuevo parámetro es "2"
 
 # Clase 337 Controladores Resource
-###
+### Creando Rutas Resources
+Crear un controlador que de manera automática tiene una serie de rutas y métodos ya establecidas
+- Para ello creamos un controldor de tipo Resource (con los métodos de CRUD ya definidos dentro) en consola
+- **php artisan make:controller UsuarioController --resource**
+- Al revisarlo en su directorio podemos ver que viene ya con una serie de métodos definidos
+
+Ahora en el archivo web.php, podemos crear una ruta de tipo resource, para llamar a todos los métodos del Controlador.
+ **Route::resource('usuario', UsuarioController::class);** (LARAVEL 11)
+
+- Si en el navegdor ponemos (...)/usuario -> nos llevará al método index de usuario
+- Si ponemos (...)/usuario/create -> nos llevará al método create, y así
+
+Para comprobar el listado de rutas: $ php artisan route:list
 
 # Clase 338 Enlaces en Laravel
-###
+### 
 
 # Clase 339 Redirecciones
 ###

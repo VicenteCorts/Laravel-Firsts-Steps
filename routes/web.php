@@ -1,10 +1,35 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/', function () {
     echo "<h1>Hola mundo</h1>";
 });
+
+Route::get('peliculas/{pagina?}', [PeliculaController::class, 'index']);
+Route::get('detalle', [PeliculaController::class, 'detalle']);
+
+//CLASE 337
+Route::resource('usuario', UsuarioController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 Route::get('/mostrar-fecha', function () {
     $titulo = "Estoy mostrando la fecha";
@@ -41,3 +66,4 @@ Route::get('/pagina-generica', function(){
     return view('pagina');
     
 });
+ */
