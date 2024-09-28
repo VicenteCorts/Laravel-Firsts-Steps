@@ -363,7 +363,7 @@ Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
 ```
 # Clase 340 Middlewares
 Los Middlewares o Filtros son componentes de Laravel que nos permiten filtrar las peticiones que hacemos mediante http. Nos permite realizar cierta lógica antes de mostrar la página
-
+https://laravel.com/docs/11.x/middleware#defining-middleware
 ### Declarar un middleware:
 - Se declaran a través de artisan
 - $ php artisan make:middleware NombreMiddleware (en neustro caso "TestYear")
