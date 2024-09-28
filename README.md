@@ -339,14 +339,14 @@ Para comprobar el listado de rutas: $ php artisan route:list
 # Clase 338 Enlaces en Laravel
 ### Enlaces en Laravel 11
 ```html
-**<a href="{{ url('peliculas') }}">Ir al detalle</a>**
+<a href="{{ url('peliculas') }}">Ir al detalle</a>
 ```
 - Prestamos especial atención al fragmento: href="{{ url('peliculas') }}"
 - lo que va en paréntsis precedido de "url" es el nombre de la ruta establecida en el archivo web.php
 
 Si quisiéramos pasar un parámetro por url se decleararía así:
 ```html
-- **<a href="{{ url('/detalle' , ['id'=> 69]) }}">Ir al detalle</a>**
+<a href="{{ url('/detalle' , ['id'=> 69]) }}">Ir al detalle</a>
 ```
 - **['id'=> 69]**
 
