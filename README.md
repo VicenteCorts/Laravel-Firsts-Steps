@@ -357,6 +357,10 @@ Si quisiéramos pasar un parámetro por url se decleararía así:
         return redirect('/detalle');
     }
 ```
+Y en el archivo web.php añadiríamos:
+```html
+Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
+```
 # Clase 340 Middlewares
 ###
 
