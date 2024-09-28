@@ -3,13 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
+//use App\Http\Middleware\TestYear;
 
 Route::get('/', function () {
     echo "<h1>Hola mundo</h1>";
 });
 
 Route::get('peliculas/{pagina?}', [PeliculaController::class, 'index']);
-Route::get('detalle', [PeliculaController::class, 'detalle']);
+Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
+        ->middleware(App\Http\Middleware\TestYear::class);
 
 //CLASE 339
 Route::get('/redirigir', [PeliculaController::class, 'redirigir']);

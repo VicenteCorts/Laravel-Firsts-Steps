@@ -6,3 +6,4 @@
 @endif
 
 <a href="{{ url('/detalle') }}">Ir al detalle</a>
+<a href="{{ url('/detalle' , ['year'=> 2019]) }}">Ir al detalle/2019</a>

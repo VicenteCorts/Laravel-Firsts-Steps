@@ -362,8 +362,57 @@ Y en el archivo web.php añadiríamos:
 Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
 ```
 # Clase 340 Middlewares
-###
+Los Middlewares o Filtros son componentes de Laravel que nos permiten filtrar las peticiones que hacemos mediante http. Nos permite realizar cierta lógica antes de mostrar la página
 
+### Declarar un middleware:
+- Se declaran a través de artisan
+- $ php artisan make:middleware NombreMiddleware (en neustro caso "TestYear")
+- Los Middleware se crean por consola y se establecen en la carpeta app/http/Middleware
+
+Ahora debemos editralo en el archivo TestYear.php (el propio Middleware que acabamos de crear).
+- Añadimos la funcionlaidad dentro de la clase
+```html
+class TestYear
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+     public function handle(Request $request, Closure $next): Response
+     {
+         $year = $request->route('year'); //Aquí puede ser route, input, Auth:: y muchos más en funcion del resultado que busquemos
+        
+         if(is_null($year) || $year != 2019){
+             return redirect('/peliculas');
+         }
+         return $next($request);
+     }
+}
+```
+
+>	Una vez definido el Middleware, debemos darlo de alta **SI QUEREMOS QUE ACTUE DE FORMA GLOBAL** - (Si es solo para una ruta, no será necesario registrarlo en laravel 11*). Para ello nos dirigimos a bootstrap/app.php
+>	```html
+>	->withMiddleware(function (Middleware $middleware) {
+>	        //
+>	        $middleware->append(App\Http\Middleware\TestYear::class); //Esta es la línea para darlo de alta
+>	    })
+>	```
+
+Por útlimo, para usarlo, debemos anexarlo al final de la ruta que queremos que sea filtrada por el Middleware
+```html
+Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
+        ->middleware(App\Http\Middleware\TestYear::class);
+```
+o también podemos hacer un "use" al principio del archivo y simplificar su escritura por si es para varias rutas
+```html
+use App\Http\Middleware\TestYear;
+
+(...)
+
+Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
+        ->middleware(TestYear::class);
+```
 # Clase 341 Formularios en Laravel
 ###
 
