@@ -416,10 +416,37 @@ Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
 # Clase 341 Formularios en Laravel
 ###
 
+# Clase 342 Conexión BBDD en Laravel
+###
 
+# Clase 343 Migraciones
+###
 
+# Clase 344 Migraciones con SQL
+###
 
+# Clase 345 Seeders
+###
 
+# Clase 346 Listar Datos
+###
+
+# Clase 347 Mostrar una Fila
+###
+
+# Clase 348 Order by
+###
+
+# Clase 349 Insertar Registros
+###
+
+# Clase 350 Borrar Registros
+###
+
+# Clase 351 Editar Registros
+###
+
+# Clase 352 Aprendiendo Laravel desde caro y paso a paso
 
 
 
