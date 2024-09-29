@@ -780,7 +780,67 @@ public function delete($id) {
 @endif
 ```
 # Clase 351 Editar Registros
-###
+- Creamos el método edit en el Controlador de Frutas
+```html
+public function edit($id) {
+        //Sacar el registro de la BBDD
+        $fruta = DB::table('frutas')->where('id',$id)->first();
+        //Pasar a la vista el objeto y rellenar el formulario
+        return view('/frutas/create', [
+            'fruta' => $fruta
+        ]);
+}
+```
+- Creamos su ruta en web.php dentro del grupo con el mismo prefijo
+**Route::get('/editar/{id}', [FrutaController::class , 'edit']);**
+
+- Reutilizaremos la vista views/fruta/create.blade.php
+```html
+@if (isset($fruta)&& is_object($fruta)) 
+<h1>Editar Fruta</h1>
+@else
+<h1>Crear un registro Frutal</h1>
+@endif
+
+<form action="{{isset($fruta) ? url('frutas/update') : url('frutas/guardar')}}" method="POST">
+    {{csrf_field()}}
+
+    @if (isset($fruta)&& is_object($fruta)) 
+    <input type="hidden" name="id" value="{{$fruta->id}}"/>
+    @endif
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" value="{{$fruta->nombre ?? ''}}"/>
+    <br/>
+    <label for="descripcion">Descripción</label>
+    <input type="text" name="descripcion" value="{{$fruta->descripcion ?? ''}}"/>
+    <br/>
+    <label for="precio">Precio</label>
+    <input type="number" name="precio" value="{{$fruta->precio ?? ''}}"/>
+    <br/>
+    <input type="submit" value="Añadir Fruta"/>
+</form>
+```
+- Creamos un nuevo método "update" en el Controlador para el action del formulario
+```html
+public function update(Request $request) {
+        $id = $request->input('id');
+        $fecha = date('Y-m-d');
+        $fruta = DB::table('frutas')
+                ->where('id', $id)
+                ->update(array(
+            'nombre' => $request->input('nombre'),
+            'descripcion' => $request->input('descripcion'),
+            'precio' => $request->input('precio'),
+            'fecha' => $fecha
+        ));
+
+        //Redirección para despues de guardar las frutas
+        return redirect('/frutas')->with('status', 'Fruta actualizada correctamente');
+    }
+```
+- Creamos la ruta del metodo update-> **Route::post('/update', [FrutaController::class , 'update']);**
+- La vista esta actualizada, tras reciclar la de create
 
 # Clase 352 Aprendiendo Laravel desde caro y paso a paso
 
