@@ -445,7 +445,37 @@ public function recibir(Request $request) {
 
 
 # Clase 342 Conexión BBDD en Laravel
-###
+### Creación de BBDD, Tablas e inserción de registros
+Hecho manualmente en phpmyadmin
+ **Ante posibles fallos de la BBDD inexplicables->$ php artisan config:cache**
+
+### Conexión a la BBDD
+Por defecto, en Laravel 11 te "obligan" a trabajar con sqlite; pero en nuestro caso queremos emplear una base de datos hecha en phpmyadmin (MySQL). Para ello debemos seguir los pasos del siguiente video:
+https://www.youtube.com/watch?v=xx8mLgWkCIY&ab_channel=CodersFree
+
+**Fichero .env** -> Fichero para modificar ciertos parámetros.
+- Modificamos la url del proyecto (empleando la url que creamos en clases anteriores con el vhost)
+- Encontramos también el apartado de BBDD:
+```html
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+Habría que modificarlo con los datos de nuestra BBDD (sin almohadillas):
+
+```html
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=fruteria_master
+DB_USERNAME=root
+DB_PASSWORD=null
+```
+
+Para comprobar que la BBDD se ha conectado, escribimos en la consola: **$ php artisan migrate** (siguiente clase)
 
 # Clase 343 Migraciones
 ###

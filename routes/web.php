@@ -9,10 +9,14 @@ Route::get('/', function () {
 });
 
 Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index']);
+
 Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])
         ->middleware(App\Http\Middleware\TestYear::class);
+
 Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
+
 Route::get('/formulario', [PeliculaController::class, 'formulario']);
+
 Route::post('/recibir', [PeliculaController::class, 'recibir']);
 
 //CLASE 337
