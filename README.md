@@ -414,7 +414,35 @@ Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
         ->middleware(TestYear::class);
 ```
 # Clase 341 Formularios en Laravel
-###
+### Formularios
+- Creamos un formulario en una nueva vista (junto con su método en el controlador correspondiente y su ruta en web.php)
+- Despues debemos importar en el controlador Request: **use Illuminate\Support\Facades\Request;** o **use Illuminate\Http\Request;** en su defecto, para hacer que el formulario funcione
+- Y creamos otro método para pasarle el parámetro para obtener los datos del formulario (así como una nueva ruta para este)
+```html
+public function recibir(Request $request) {
+        $nombre = $request->input('nombre');
+        var_dump($nombre);
+        die();
+    }
+```
+- La ruta del método"recibir" va por post-> **Route::post('/recibir', [PeliculaController::class, 'recibir']);**
+- Al probarlo nos dara error "page expired" porque en Laravel debemos añadir protección a los formularios contra CSRF (?)
+- Por lo que el formulario nos debería quedar así
+```html
+<h1>Formulario en Laravel</h1>
+<form action="{{url('/recibir')}}" method="POST">
+    {{csrf_field()}}
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre"/>
+    <br/>
+    <label for="email">Email</label>
+    <input type="email" name="email"/>
+    <br/>
+    <input type="submit" value="enviar"/>
+</form>
+```
+- **Especial atención a: {{csrf_field()}}**
+
 
 # Clase 342 Conexión BBDD en Laravel
 ###

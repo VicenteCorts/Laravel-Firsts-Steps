@@ -3,18 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
-//use App\Http\Middleware\TestYear;
 
 Route::get('/', function () {
     echo "<h1>Hola mundo</h1>";
 });
 
-Route::get('peliculas/{pagina?}', [PeliculaController::class, 'index']);
-Route::get('detalle/{year?}', [PeliculaController::class, 'detalle'])
+Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index']);
+Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])
         ->middleware(App\Http\Middleware\TestYear::class);
-
-//CLASE 339
 Route::get('/redirigir', [PeliculaController::class, 'redirigir']);
+Route::get('/formulario', [PeliculaController::class, 'formulario']);
+Route::post('/recibir', [PeliculaController::class, 'recibir']);
 
 //CLASE 337
 Route::resource('usuario', UsuarioController::class);
