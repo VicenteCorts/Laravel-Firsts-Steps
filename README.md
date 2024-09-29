@@ -692,10 +692,23 @@ public function detail($id) {
 **DATO CURIOSO**
 Hacer enlace con id personal:
 ```html
-<a href="{{ url('/detail', ['id' => $fruta->id] ) }}">ENLACE</a>
+<a href="{{url('/detail', ['id' => $fruta->id])}}">ENLACE</a>
 ```
 # Clase 348 Order by
-###
+### Declaración
+-**->orderBy('id','desc')**	
+Incluida en una declaración para DB sería:
+```html
+public function index() {
+	$frutas = DB::table('frutas')
+                ->orderBy('id','desc')
+                ->get(); //SELECT * FROM frutas
+
+        return view('fruta.index', [
+            'frutas'=> $frutas
+        ]); //Vista en la que listaremos nuestro contenido
+}
+```
 
 # Clase 349 Insertar Registros
 ###

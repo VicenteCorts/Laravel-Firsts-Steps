@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB; //ESTE ES EL OBJETO DB PARA QUE FUNCIONEN LAS
 class FrutaController extends Controller
 {
     public function index() {
-        $frutas = DB::table('frutas')->get(); //SELECT * FROM frutas
+        $frutas = DB::table('frutas')
+                ->orderBy('id','desc')
+                ->get(); //SELECT * FROM frutas
 
         return view('fruta.index', [
             'frutas'=> $frutas
