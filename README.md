@@ -446,8 +446,8 @@ public function recibir(Request $request) {
 
 # Clase 342 Conexión BBDD en Laravel
 ### Creación de BBDD, Tablas e inserción de registros
-Hecho manualmente en phpmyadmin
- **Ante posibles fallos de la BBDD inexplicables->$ php artisan config:cache**
+Hecho manualmente en phpmyadmin. Encode->utf8mb4_general_ci
+-  **Ante posibles fallos de la BBDD inexplicables->$ php artisan config:cache**
 
 ### Conexión a la BBDD
 Por defecto, en Laravel 11 te "obligan" a trabajar con sqlite; pero en nuestro caso queremos emplear una base de datos hecha en phpmyadmin (MySQL). Para ello debemos seguir los pasos del siguiente video:
