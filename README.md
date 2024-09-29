@@ -629,7 +629,48 @@ Y posteriormente, volvemos a la consola para ejecutar el comando: **$ php artisa
 - Simplemente poner "\" delante de DB
 
 # Clase 346 Listar Datos
-###
+### Listar datos
+- Creamos un nuevo controlador: FrutaController-> **php artisan make:controller FrutaController**
+- Lo abrimos y creamos métodos en él
+- **RECORDAR SIEMPRE INCLUIR EL OBJETO DB**
+
+```html
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; //ESTE ES EL OBJETO DB PARA QUE FUNCIONEN LAS TAREAS DE BBDD
+
+class FrutaController extends Controller
+{
+    public function index() {
+        $frutas = \DB::table('frutas')->get(); //SELECT * FROM frutas
+        
+        return view('fruta.index', [
+            'frutas'=> $frutas
+        ]); //Vista en la que listaremos nuestro contenido
+    }
+}
+```
+
+- Creamos en la carpeta views una carpeta (fruta) y un archivo (index.blade.php) con contenido:
+```html
+<h1>Listado de frutas</h1>
+<ul>
+    @foreach($frutas as $fruta)
+        <li>{{$fruta->nombre}}</li>
+    @endforeach
+</ul>
+```
+
+- Y por último creamos su ruta en web.php || En el siguiente ejemplo vemos una **ruta agrupada**; para posteriormente reutilizarla en más rutas del mismo controlador
+```html
+Route::controller(FrutaController::class)->group(function () {
+    Route::get('/frutas', 'index');
+});
+```
+
 
 # Clase 347 Mostrar una Fila
 ###

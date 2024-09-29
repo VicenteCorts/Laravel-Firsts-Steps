@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\FrutaController;
 
 Route::get('/', function () {
     echo "<h1>Hola mundo</h1>";
@@ -29,6 +30,14 @@ Route::post('/recibir', [PeliculaController::class, 'recibir']);
 
 //CLASE 337
 Route::resource('usuario', UsuarioController::class);
+
+//CLASE 346
+//Así funcionaría pero intentemos una ruta grupal
+//Route::get('/frutas', [FrutaController::class, 'index']); 
+
+Route::controller(FrutaController::class)->group(function () {
+    Route::get('/frutas', 'index');
+});
 
 
 
