@@ -39,6 +39,16 @@ class FrutaController extends Controller
         ));
         
         //Redirección para despues de guardar las frutas
-        return redirect('/frutas');
+        return redirect('/frutas')->with('status', 'Fruta creada correctamente');
+    }
+    
+    public function delete($id) {
+        $fruta = DB::table('frutas')->where('id',$id)->delete();
+        return redirect('/frutas')->with('status', 'Fruta borrada correctamente');
+    }
+    
+    public function edit($id) {
+        $fruta = DB::table('frutas')->where('id',$id)->delete();
+        return redirect('/frutas')->with('status', 'Fruta borrada correctamente');
     }
 }

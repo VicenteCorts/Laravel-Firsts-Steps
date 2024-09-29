@@ -50,6 +50,8 @@ Route::prefix('frutas')->group(function () {
     Route::get('/detail/{id}', [FrutaController::class , 'detail']);
     Route::get('/crear', [FrutaController::class , 'crear']);
     Route::post('/guardar', [FrutaController::class , 'save']);
+    Route::get('/delete/{id}', [FrutaController::class , 'delete']);
+    Route::get('/update/{id}', [FrutaController::class , 'edit']);
 });
 
 

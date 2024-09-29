@@ -762,11 +762,23 @@ Route::prefix('frutas')->group(function () {
     Route::post('/guardar', [FrutaController::class , 'save']);		//ESTA  !!! Route::post !!!
 });
 ```
-- 
 
 # Clase 350 Borrar Registros
-###
-
+### Eliminar Registro
+- Creamos los métodos en el Controlador de Frutas
+```html
+public function delete($id) {
+        $fruta = DB::table('frutas')->where('id',$id)->delete();
+        return redirect('/frutas')->with('status', 'Fruta borrada correctamente');
+}
+```
+- Creamos la Ruta en web.php-> **Route::get('/delete/{id}', [FrutaController::class , 'delete']);**
+- Por último habría que declarar la session('status') para que aparezca el mensaje del return. Para ello añadimos el siguiente bloque en index.blade.php
+```html
+@if(session('status'))
+<p style="background: greenyellow;">{{session('status')}}</p>
+@endif
+```
 # Clase 351 Editar Registros
 ###
 
