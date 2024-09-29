@@ -464,7 +464,7 @@ DB_CONNECTION=sqlite
 # DB_USERNAME=root
 # DB_PASSWORD=
 ```
-Habría que modificarlo con los datos de nuestra BBDD (sin almohadillas):
+Habría que modificar el apartado **DB_CONNECTION**:
 
 ```html
 DB_CONNECTION=mysql //Ya que vamos a utilizar la BBDD de phpmyadmin
@@ -490,7 +490,24 @@ DB_CONNECTION=mysql //Ya que vamos a utilizar la BBDD de phpmyadmin
 (...)
 ```
 
-Para comprobar que la BBDD se ha conectado, escribimos en la consola: **$ php artisan migrate** (siguiente clase)
+**Volvemos al archivo .env**. Tras estos cambios una línea de código se cambia automaticamente: SESSION_DRIVER=database
+- Debemos cambiarla a **SESSION_DRIVER=file**
+
+Por último, para comprobar que la BBDD se ha conectado, escribimos en el archivo web.php el sigueinte código
+```html
+Route::get('/', function () {
+    echo "<h1>Hola mundo</h1>";
+    
+    try {
+        \DB::connection()->getPDO();
+        echo \DB::connection()->getDatabaseName();
+        } catch (\Exception $e) {
+        echo 'None';
+    }
+$tables = \DB::select('show tables');
+});
+```
+En la pantalla del index de neustro proyecto debería mostrarse el nombre de nuestra BBDD.
 
 # Clase 343 Migraciones
 ### Migraciones
