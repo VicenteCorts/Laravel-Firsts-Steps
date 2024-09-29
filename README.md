@@ -478,7 +478,59 @@ DB_PASSWORD=null
 Para comprobar que la BBDD se ha conectado, escribimos en la consola: **$ php artisan migrate** (siguiente clase)
 
 # Clase 343 Migraciones
-###
+### Migraciones
+Nos permiten versionar nuestra BBDD sin necesidad de modificarla manualmente. No es extrictamente necesario pero es una buena práctica
+
+### Crear Migraciones
+Si vamos a crear una nueva tabla "usuarios":
+- nos dirigimos a la consola y buscamos nuestro proyecto
+- $ php artisan make:migration create_usuarios_table
+- En laravel existen los "schema builder" -> $ php artisan make:migration create_usuarios_table --table=usuarios
+- Las migraciones se guardan en la carpeta del proyecto **database/migrations**
+
+Una migración cosnta de lo sigueinte:
+- imports que necesita
+- método up (crea tabla)
+- método down (borro tabla)
+- Blueprint => esquema builder que nos permite crear las tablas
+
+Información adicional en: https://laravel.com/docs/11.x/migrations
+
+### Blueprint en la función "UP"
+Primero creamos la tabla:
+```html
+public function up(): void
+    {
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre', 255);
+            $table->string('email', 255);
+            $table->string('password', 255);
+            $table->integer('edad');
+            $table->timestamps();
+        });
+    }
+```
+
+### Blueprint "DOWN"
+```html
+public function down(): void
+    {
+        Schema::drop('usuarios');
+    }
+```
+
+#### Lanzar Migraciones
+Consola:
+- **$ php artisan migrate**
+
+#### Revertir Migraciones
+Consola:
+- **$ php artisan migrate:rollback**
+
+#### Re-Lanzar Migraciones
+Consola:
+- **$ php artisan migrate:refresh**
 
 # Clase 344 Migraciones con SQL
 ###
