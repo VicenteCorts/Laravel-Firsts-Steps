@@ -37,6 +37,7 @@ Route::resource('usuario', UsuarioController::class);
 
 Route::controller(FrutaController::class)->group(function () {
     Route::get('/frutas', 'index');
+    Route::get('/detail/{id}', 'detail');
 });
 
 

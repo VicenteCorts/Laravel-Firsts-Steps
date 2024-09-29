@@ -15,7 +15,14 @@ class FrutaController extends Controller
         ]); //Vista en la que listaremos nuestro contenido
     }
     
-    public function detail() {
-        
+    public function detail($id) {
+       $fruta = DB:: table('frutas')->where('id', '=', $id)->first();
+       
+//       var_dump($fruta);
+//       die();
+       
+       return view('fruta.detail',[
+           'fruta' => $fruta
+       ]);
     }
 }

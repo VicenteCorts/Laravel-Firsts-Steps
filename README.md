@@ -671,10 +671,29 @@ Route::controller(FrutaController::class)->group(function () {
 });
 ```
 
-
 # Clase 347 Mostrar una Fila
-###
+### Query Builder
+https://laravel.com/docs/11.x/queries
 
+### Declaración 
+Añadimos el método dentro del Controlador
+```html
+public function detail($id) {
+       $fruta = DB:: table('frutas')->where('id', '=', $id)->first(); //el método first saca el objeto "limpio"
+       
+       return view('fruta.detail',[
+           'fruta' => $fruta
+       ]);
+    }
+```
+- Creamos la vista correspondiente ->archivo detail.blade.php dentro de la carpeta fruta de views
+- Y creamos también la ruta correspondiente: **Route::get('/detail/{id}', 'detail');** (LA AÑADIMOS DENTRO DE LA RUTA GRUPAL DE LA CLASE ENTERIOR)
+
+**DATO CURIOSO**
+Hacer enlace con id personal:
+```html
+<a href="{{ url('/detail', ['id' => $fruta->id] ) }}">ENLACE</a>
+```
 # Clase 348 Order by
 ###
 
