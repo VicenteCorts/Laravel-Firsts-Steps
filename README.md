@@ -467,12 +467,27 @@ DB_CONNECTION=sqlite
 Habría que modificarlo con los datos de nuestra BBDD (sin almohadillas):
 
 ```html
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=fruteria_master
-DB_USERNAME=root
-DB_PASSWORD=null
+DB_CONNECTION=mysql //Ya que vamos a utilizar la BBDD de phpmyadmin
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+**Fichero database.php** (lo encontramos en la carpeta config). Debemos modificar los parámetros de nuestra BBDD en el apartado mysql:
+```html
+'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'fruteria_master'), //ESPECIAL ATENCIÓN AQUí
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_general_ci'), //ESPECIAL ATENCIÓN AQUí
+(...)
 ```
 
 Para comprobar que la BBDD se ha conectado, escribimos en la consola: **$ php artisan migrate** (siguiente clase)

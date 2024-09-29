@@ -13,7 +13,7 @@ Route::get('/', function () {
         } catch (\Exception $e) {
         echo 'None';
     }
-
+$tables = \DB::select('show tables');
 });
 
 Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index']);
