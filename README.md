@@ -666,8 +666,11 @@ class FrutaController extends Controller
 
 - Y por último creamos su ruta en web.php || En el siguiente ejemplo vemos una **ruta agrupada**; para posteriormente reutilizarla en más rutas del mismo controlador
 ```html
-Route::controller(FrutaController::class)->group(function () {
-    Route::get('/frutas', 'index');
+Route::prefix('frutas')->group(function () {
+    Route::get('/', [FrutaController::class , 'index']);
+    Route::get('/detail/{id}', [FrutaController::class , 'detail']);
+    Route::get('/crear', [FrutaController::class , 'crear']);
+    Route::get('/guardar', [FrutaController::class , 'save']);
 });
 ```
 
@@ -711,7 +714,55 @@ public function index() {
 ```
 
 # Clase 349 Insertar Registros
-###
+### Crear página con formulario para inserts
+- Creamos un nuevo método en el Controlador para **crear** registro
+```html
+public function crear() {
+        return view('fruta.create');
+}
+```
+- Creamos un nuevo método en el Controlador para **guardar** registro
+```html
+public function save(Request $request) {
+        $fruta = DB::table('frutas')->insert(array(
+           'nombre' => $request->input('nombre'), 
+           'descripcion' => $request->input('descripcion'), 
+           'precio' => $request->input('precio'),
+           'fecha' => date('Y-m-d')
+        ));
+
+
+        //Redirección para despues de guardar las frutas
+        return redirect('/frutas');
+}
+```
+- Creamos la **vista del return de crear** con un formulario en ella
+```html
+<h1>Crear un registro Frutal</h1>
+<form action="{{url('fruta/guardar')}}" method="POST">
+    {{csrf_field()}}
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre"/>
+    <br/>
+    <label for="descripcion">Descripción</label>
+    <input type="text" name="descripcion"/>
+    <br/>
+    <label for="precio">Precio</label>
+    <input type="number" name="precio"/>
+    <br/>
+    <input type="submit" value="Añadir Fruta"/>
+</form>
+```
+- Creamos las rutas correspondientes para los nuevos métodos del controlador:
+```html
+Route::prefix('frutas')->group(function () {
+    Route::get('/', [FrutaController::class , 'index']);
+    Route::get('/detail/{id}', [FrutaController::class , 'detail']);
+    Route::get('/crear', [FrutaController::class , 'crear']);		//ESTA y..
+    Route::post('/guardar', [FrutaController::class , 'save']);		//ESTA  !!! Route::post !!!
+});
+```
+- 
 
 # Clase 350 Borrar Registros
 ###

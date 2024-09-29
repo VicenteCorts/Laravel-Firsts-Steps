@@ -19,12 +19,26 @@ class FrutaController extends Controller
     
     public function detail($id) {
        $fruta = DB:: table('frutas')->where('id', '=', $id)->first();
-       
-//       var_dump($fruta);
-//       die();
-       
+ 
        return view('fruta.detail',[
            'fruta' => $fruta
        ]);
+    }
+    
+    public function crear() {
+        return view('fruta.create');
+    }
+    
+    public function save(Request $request) {
+        $fecha = date('Y-m-d');
+        $fruta = DB::table('frutas')->insert(array(
+           'nombre' => $request->input('nombre'), 
+           'descripcion' => $request->input('descripcion'), 
+           'precio' => $request->input('precio'),
+           'fecha' => $fecha
+        ));
+        
+        //Redirección para despues de guardar las frutas
+        return redirect('/frutas');
     }
 }

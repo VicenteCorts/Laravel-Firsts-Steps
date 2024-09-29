@@ -35,11 +35,22 @@ Route::resource('usuario', UsuarioController::class);
 //Así funcionaría pero intentemos una ruta grupal
 //Route::get('/frutas', [FrutaController::class, 'index']); 
 
-Route::controller(FrutaController::class)->group(function () {
-    Route::get('/frutas', 'index');
-    Route::get('/detail/{id}', 'detail');
-});
+//EJEMPLO DE ROUTING PARA UN CONTROLADOR COMPLETO
+//
+//Route::controller(FrutaController::class)->group(function () {
+//    Route::get('/frutas', 'index');
+//    Route::get('/frutas/detail/{id}', 'detail');
+//    Route::get('/frutas/crear', 'crear');
+//    Route::get('/frutas/guardar', 'save');
+//});
 
+//EJEMPLO DE ROUTING CON PREFIJO
+Route::prefix('frutas')->group(function () {
+    Route::get('/', [FrutaController::class , 'index']);
+    Route::get('/detail/{id}', [FrutaController::class , 'detail']);
+    Route::get('/crear', [FrutaController::class , 'crear']);
+    Route::post('/guardar', [FrutaController::class , 'save']);
+});
 
 
 
