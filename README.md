@@ -511,24 +511,23 @@ En la pantalla del index de neustro proyecto debería mostrarse el nombre de nue
 
 # Clase 343 Migraciones
 ### Migraciones
-Nos permiten versionar nuestra BBDD sin necesidad de modificarla manualmente. No es extrictamente necesario pero es una buena práctica
+Las migraciones son como control de versiones de su base de datos, lo que le permite a su equipo definir y compartir la definición del esquema de la base de datos de la aplicación. Si alguna vez tuvo que decirle a un compañero de equipo que agregue manualmente una columna a su esquema de base de datos local después de realizar los cambios desde el control de fuente, se ha enfrentado al problema que resuelven las migraciones de bases de datos.
 
 ### Crear Migraciones
-Si vamos a crear una nueva tabla "usuarios":
-- nos dirigimos a la consola y buscamos nuestro proyecto
+**Ejemplo: crear una nueva tabla llamada usuarios**
+- nos dirigimos a la consola y buscamos la carpeta de nuestro proyecto
 - $ php artisan make:migration create_usuarios_table
-- En laravel existen los "schema builder" -> $ php artisan make:migration create_usuarios_table --table=usuarios
+- Si además queremos que Laravel nos cree un schema builder (estructura básica de la tabla) de la tabla emplearemos el sigueinte comando por consola **$ php artisan make:migration create_usuarios_table --table=usuarios**
 - Las migraciones se guardan en la carpeta del proyecto **database/migrations**
 
 Una migración cosnta de lo sigueinte:
-- imports que necesita
-- método up (crea tabla)
-- método down (borro tabla)
-- Blueprint => esquema builder que nos permite crear las tablas
+- imports que necesita ||  Blueprint => esquema builder que nos permite crear las tablas || Schema-> crear la tabla en sí
+- método up (crear tabla)
+- método down (borrar tabla)
 
 Información adicional en: https://laravel.com/docs/11.x/migrations
 
-### Blueprint en la función "UP"
+#### Blueprint en la función "UP"
 Primero creamos la tabla:
 ```html
 public function up(): void
@@ -544,17 +543,35 @@ public function up(): void
     }
 ```
 
-### Blueprint "DOWN"
+#### Blueprint "DOWN"
 ```html
 public function down(): void
     {
         Schema::drop('usuarios');
     }
 ```
+### Manipulando las Migraciones
+https://stackoverflow.com/questions/42244541/laravel-migration-error-syntax-error-or-access-violation-1071-specified-key-wa
+Previamente a empezar con las migraciones y rollbacks debemos modificar el archivo **/app/Providers/AppServiceProvider.php**
+- Debido a una incompatibilidad entre el tamaño de una de las columnas de las migraciones por defecto
+- En ese archivo debemos incluir:
+```html
+use Illuminate\Support\Facades\Schema; //ESTA LÍNEA Y...
 
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191); //ESTA LÍNEA
+}
+``` 
 #### Lanzar Migraciones
 Consola:
 - **$ php artisan migrate**
+- Esto ejecutará todas las migraciones. Por defecto en Laravel tenemos 3 migraciones además de la de create_usuarios_table que hemos hecho nosotros. Por lo que se migrarán 4 tablas.
 
 #### Revertir Migraciones
 Consola:
