@@ -599,9 +599,34 @@ public function up(): void {
     );
 }
 ```
+- Para ejecutarlo empleamos un **$ php artisan migrate:refresh** para actualizar los cambios.
 
 # Clase 345 Seeders
-###
+### Creación Seeders
+Mecanismos para rellenar las tablas. Estos se guardan en la ruta database\seeders\frutas_seed.php. Para crearlos se emplea el siguiente comando por consola:
+- **$ php artisan make:seed frutas_seed**
+
+### Construir Seeder
+Ubicándonos en el propio seeder (frutas_seed) completaremos con el siguiente código de ejemplo:
+```html
+public function run(): void
+    {
+        for($i =0; $i<= 20; $i++){
+            \DB::table('frutas')->insert(array(
+               'nombre'=> "cereza".$i,
+               'descripcion'=> "Descripción de la fruta".$i,
+	       'precio'=> $i,
+               'fecha'=> date('y-m-d')
+            ));
+            
+            $this->command->info('la tabla de frutas ha sido actualizada');
+        }
+    }
+```
+Y posteriormente, volvemos a la consola para ejecutar el comando: **$ php artisan db:seed --class=frutas_seed**
+
+##### Solución de error **Class "Database\Seeders\DB" not found** -> https://stackoverflow.com/questions/64406855/laravel-8-class-database-seeders-db-not-found
+- Simplemente poner "\" delante de DB
 
 # Clase 346 Listar Datos
 ###
