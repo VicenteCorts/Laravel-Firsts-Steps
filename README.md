@@ -582,7 +582,23 @@ Consola:
 - **$ php artisan migrate:refresh**
 
 # Clase 344 Migraciones con SQL
-###
+### Formato de las peticiones SQL
+Para declarar las migraciones de creación de tablas, el código puede resultar un poco engorroso. Es por ello que cabe la posibilidad de realizar las consultas mediante instrucciones SQL. A continuación veremos el código empleado para crear la misma tabla usuarios de la clase anterior (que fue mediante Blueprint, en vez de SQL:
+
+```html
+public function up(): void {
+
+    DB::statement("
+          CREATE TABLE usuarios(
+              id int(255) auto_increment not null,
+              nombre varchar (255),
+              email varchar(255),
+              password varchar (255),
+	      PRIMARY KEY(id)
+          );"
+    );
+}
+```
 
 # Clase 345 Seeders
 ###
